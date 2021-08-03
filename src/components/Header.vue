@@ -1,10 +1,12 @@
 <template>
 	<header>
 		<h1>{{ title }}</h1>
+		<Button color="green" />
 	</header>
 </template>
 
 <script>
+import Button from './Button.vue';
 export default {
 	name: 'Header',
 	props: {
@@ -12,6 +14,9 @@ export default {
 			type: String,
 			default: 'Header',
 		},
+	},
+	components: {
+		Button,
 	},
 };
 </script>

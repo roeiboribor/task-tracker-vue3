@@ -36,16 +36,17 @@ body {
 }
 .btn {
 	display: inline-block;
-	background: #000;
-	color: #fff;
+	background: transparent;
+	color: #000;
 	border: none;
-	padding: 10px 20px;
-	margin: 5px;
 	border-radius: 5px;
 	cursor: pointer;
 	text-decoration: none;
 	font-size: 15px;
 	font-family: inherit;
+}
+.btn-success {
+	color: #429c30;
 }
 .btn:focus {
 	outline: none;
@@ -56,5 +57,14 @@ body {
 .btn-block {
 	display: block;
 	width: 100%;
+}
+.noselect {
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Safari */
+	-khtml-user-select: none; /* Konqueror HTML */
+	-moz-user-select: none; /* Old versions of Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
 }
 </style>

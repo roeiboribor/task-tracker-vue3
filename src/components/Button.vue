@@ -1,9 +1,19 @@
 <template>
-	<box-icon type="solid" name="plus-square"></box-icon>
+	<button @click="onClick()" class="btn btn-success">
+		<i class="bx bxs-plus-square bx-lg"></i>
+	</button>
 </template>
 
 <script>
-export default defineComponent({
+export default {
 	name: 'Button',
-});
+	props: {
+		color: String,
+	},
+	methods: {
+		onClick() {
+			console.log('Add!');
+		},
+	},
+};
 </script>
