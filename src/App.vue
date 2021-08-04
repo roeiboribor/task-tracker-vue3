@@ -1,7 +1,7 @@
 <template>
 	<div class="container">
 		<Header title="Task Tracker" />
-		<AddTask />
+		<AddTask @add-task="addTask" />
 		<p class="tip">
 			<b>Tip: </b>
 			Double Tap to set reminder!
@@ -32,6 +32,9 @@ export default {
 		};
 	},
 	methods: {
+		addTask(task) {
+			this.tasks = [...this.tasks, task];
+		},
 		deleteTask(id) {
 			if (confirm('Are you sure to delete this task?')) {
 				this.tasks = this.tasks.filter((task) => task.id !== id);

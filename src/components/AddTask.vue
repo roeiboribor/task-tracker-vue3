@@ -2,17 +2,17 @@
 	<form @submit="onSubmit" class="add-form">
 		<div class="form-control">
 			<label>Task</label>
-			<input type="text" v-model="text" name="text" placeholder="Add Task" />
+			<input
+				type="text"
+				v-model="text"
+				name="text"
+				placeholder="Add Task"
+				required
+			/>
 		</div>
 		<div class="form-control">
 			<label>Date & Time</label>
-			<input
-				type="datetime-local"
-				v-model="datetime"
-				name="datetime"
-				placeholder="Select Date & Time"
-				required
-			/>
+			<input type="datetime-local" v-model="datetime" name="datetime" required />
 		</div>
 		<div class="form-control form-control-check">
 			<label>Set Reminder</label>
@@ -26,10 +26,34 @@
 </template>
 
 <script>
-import Button from './Button.vue';
 export default {
-	components: { Button },
 	name: 'AddTask',
+	data() {
+		return {
+			text: '',
+			datetime: '',
+			reminder: false,
+		};
+	},
+	methods: {
+		onSubmit(e) {
+			e.preventDefault();
+			const dt = new Date(this.datetime);
+			const newTask = {
+				id: `${Math.floor(Math.random() * 100)}${Date.now()}`,
+				text: this.text,
+				datetime: `${dt.toLocaleString()}`,
+				reminder: this.reminder,
+			};
+			this.onClearForm();
+			this.$emit('add-task', newTask);
+		},
+		onClearForm() {
+			this.text = '';
+			this.datetime = '';
+			this.reminder = false;
+		},
+	},
 };
 </script>
 
