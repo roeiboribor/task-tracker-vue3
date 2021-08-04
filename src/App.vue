@@ -1,18 +1,24 @@
 <template>
 	<div class="container">
-		<Header title="Task Tracker" />
-		<div v-show="showAddTask">
-			<AddTask @add-task="addTask" />
+		<div class="card bg-glass">
+			<Header
+				title="Task Tracker"
+				@toggle-add-task="toggleAddTask"
+				:showAddTask="showAddTask"
+			/>
+			<div v-show="showAddTask">
+				<AddTask @add-task="addTask" />
+			</div>
+			<p class="tip">
+				<b>Tip: </b>
+				Double Tap to set reminder!
+			</p>
+			<Tasks
+				@toggle-reminder="toggleReminder"
+				@delete-task="deleteTask"
+				:tasks="tasks"
+			/>
 		</div>
-		<p class="tip">
-			<b>Tip: </b>
-			Double Tap to set reminder!
-		</p>
-		<Tasks
-			@toggle-reminder="toggleReminder"
-			@delete-task="deleteTask"
-			:tasks="tasks"
-		/>
 	</div>
 </template>
 
@@ -47,6 +53,9 @@ export default {
 			this.tasks = this.tasks.map((task) =>
 				task.id == id ? { ...task, reminder: !task.reminder } : task
 			);
+		},
+		toggleAddTask() {
+			this.showAddTask = !this.showAddTask;
 		},
 	},
 	created() {
@@ -93,17 +102,32 @@ export default {
 	margin: 0;
 	padding: 0;
 }
+html {
+	min-height: 100vh;
+}
 body {
 	font-family: 'Poppins', sans-serif;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	background-color: #22c1c3;
+	background-image: linear-gradient(37deg, #22c1c3 0%, #fdbb2d 100%);
 }
 .container {
-	max-width: 500px;
-	margin: 30px auto;
+	max-width: 796px;
+	margin: 2rem auto;
 	overflow: auto;
 	min-height: 300px;
-	border: 1px solid steelblue;
-	padding: 30px;
+	padding: 0.5rem 1rem;
+}
+.card {
+	width: 100%;
+	padding: 1rem 2rem;
+}
+.bg-glass {
 	border-radius: 5px;
+	background-color: rgba(255, 255, 255, 0.4);
+	backdrop-filter: blur(8px);
 }
 .tip {
 	margin-bottom: 1rem;
@@ -122,10 +146,10 @@ body {
 	font-family: inherit;
 }
 .btn-success {
-	background: transparent;
-	padding: 0;
-	margin: 0;
-	color: #429c30;
+	background: #429c30;
+}
+.btn-danger {
+	background: #c00404;
 }
 .btn:focus {
 	outline: none;
@@ -136,14 +160,5 @@ body {
 .btn-block {
 	display: block;
 	width: 100%;
-}
-.noselect {
-	-webkit-touch-callout: none; /* iOS Safari */
-	-webkit-user-select: none; /* Safari */
-	-khtml-user-select: none; /* Konqueror HTML */
-	-moz-user-select: none; /* Old versions of Firefox */
-	-ms-user-select: none; /* Internet Explorer/Edge */
-	user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome, Edge, Opera and Firefox */
 }
 </style>

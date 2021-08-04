@@ -1,6 +1,9 @@
 <template>
-	<button @click="onClick()" class="btn btn-success">
-		<i class="bx bxs-plus-square bx-lg"></i>
+	<button
+		@click="onClick()"
+		:class="[showAddTask ? 'btn-danger' : 'btn-success', 'btn']"
+	>
+		{{ showAddTask ? 'Close' : 'Add Task' }}
 	</button>
 </template>
 
@@ -8,11 +11,12 @@
 export default {
 	name: 'Button',
 	props: {
-		color: String,
+		text: String,
+		showAddTask: Boolean,
 	},
 	methods: {
 		onClick() {
-			console.log('Add!');
+			this.$emit('btn-click');
 		},
 	},
 };

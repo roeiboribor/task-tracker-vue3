@@ -19,12 +19,6 @@ export default {
 	props: {
 		task: Object,
 	},
-	/* methods: {
-		// Longer Process onDelete(task.id)
-		onDelete(id) {
-			this.$emit('delete-task', id);
-		},
-	}, */
 };
 </script>
 
