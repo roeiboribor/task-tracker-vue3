@@ -1,6 +1,7 @@
 <template>
 	<div class="container">
 		<Header title="Task Tracker" />
+		<AddTask />
 		<p class="tip">
 			<b>Tip: </b>
 			Double Tap to set reminder!
@@ -16,12 +17,14 @@
 <script>
 import Header from './components/Header.vue';
 import Tasks from './components/Tasks.vue';
+import AddTask from './components/AddTask.vue';
 
 export default {
 	name: 'App',
 	components: {
 		Header,
 		Tasks,
+		AddTask,
 	},
 	data() {
 		return {
@@ -45,41 +48,31 @@ export default {
 			{
 				id: 1,
 				text: 'Take out the trash',
-				month: 'August',
-				date: '03',
-				time: '2:30 PM',
+				datetime: '08/05/2021, 6:30 PM',
 				reminder: true,
 			},
 			{
 				id: 2,
 				text: 'Clean the windows',
-				month: 'September',
-				date: '01',
-				time: '9:30 PM',
+				datetime: '08/06/2021, 6:00 AM',
 				reminder: true,
 			},
 			{
 				id: 3,
 				text: 'Cook for lunch',
-				dmonth: 'November',
-				date: '19',
-				time: '2:30 PM',
+				datetime: '08/07/2021, 11:30 AM',
 				reminder: false,
 			},
 			{
 				id: 4,
 				text: 'Buy some groceries',
-				month: 'December',
-				date: '25',
-				time: '11:00 AM',
+				datetime: '08/08/2021, 09:00 AM',
 				reminder: false,
 			},
 			{
 				id: 5,
 				text: 'Paint the roof top',
-				month: 'January',
-				date: '13',
-				time: '10:30 AM',
+				datetime: '08/09/2021, 10:00 AM',
 				reminder: true,
 			},
 		];
@@ -111,8 +104,10 @@ body {
 }
 .btn {
 	display: inline-block;
-	background: transparent;
-	color: #000;
+	background: #000;
+	padding: 10px 20px;
+	margin: 5px;
+	color: #fff;
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
@@ -121,6 +116,9 @@ body {
 	font-family: inherit;
 }
 .btn-success {
+	background: transparent;
+	padding: 0;
+	margin: 0;
 	color: #429c30;
 }
 .btn:focus {
