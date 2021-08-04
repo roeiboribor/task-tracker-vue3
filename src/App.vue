@@ -1,7 +1,9 @@
 <template>
 	<div class="container">
 		<Header title="Task Tracker" />
-		<AddTask @add-task="addTask" />
+		<div v-show="showAddTask">
+			<AddTask @add-task="addTask" />
+		</div>
 		<p class="tip">
 			<b>Tip: </b>
 			Double Tap to set reminder!
@@ -29,6 +31,7 @@ export default {
 	data() {
 		return {
 			tasks: [],
+			showAddTask: false,
 		};
 	},
 	methods: {
