@@ -1,11 +1,15 @@
 <template>
 	<div class="container">
 		<Header title="Task Tracker" />
-		<p>
+		<p class="tip">
 			<b>Tip: </b>
 			Double Tap to set reminder!
 		</p>
-		<Tasks :tasks="tasks" />
+		<Tasks
+			@toggle-reminder="toggleReminder"
+			@delete-task="deleteTask"
+			:tasks="tasks"
+		/>
 	</div>
 </template>
 
@@ -23,6 +27,18 @@ export default {
 		return {
 			tasks: [],
 		};
+	},
+	methods: {
+		deleteTask(id) {
+			if (confirm('Are you sure to delete this task?')) {
+				this.tasks = this.tasks.filter((task) => task.id !== id);
+			}
+		},
+		toggleReminder(id) {
+			this.tasks = this.tasks.map((task) =>
+				task.id == id ? { ...task, reminder: !task.reminder } : task
+			);
+		},
 	},
 	created() {
 		this.tasks = [
@@ -89,6 +105,9 @@ body {
 	border: 1px solid steelblue;
 	padding: 30px;
 	border-radius: 5px;
+}
+.tip {
+	margin-bottom: 1rem;
 }
 .btn {
 	display: inline-block;
