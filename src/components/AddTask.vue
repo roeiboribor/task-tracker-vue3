@@ -5,8 +5,14 @@
 			<input type="text" v-model="text" name="text" placeholder="Add Task" />
 		</div>
 		<div class="form-control">
-			<label>Day & Time</label>
-			<input type="text" v-model="day" name="day" placeholder="Add Day & Time" />
+			<label>Date & Time</label>
+			<input
+				type="datetime-local"
+				v-model="datetime"
+				name="datetime"
+				placeholder="Select Date & Time"
+				required
+			/>
 		</div>
 		<div class="form-control form-control-check">
 			<label>Set Reminder</label>
@@ -14,7 +20,7 @@
 		</div>
 
 		<button type="submit" class="btn btn-block">
-			<i class="bx bxs-save bx-sm"></i> Save Task
+			Save Task <i class="bx bxs-save bx-sm"></i>
 		</button>
 	</form>
 </template>
@@ -30,7 +36,6 @@ export default {
 <style scoped>
 .bx {
 	vertical-align: middle;
-	margin-right: 1rem;
 }
 .add-form {
 	margin-bottom: 40px;

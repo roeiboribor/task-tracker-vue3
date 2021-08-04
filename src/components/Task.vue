@@ -8,7 +8,7 @@
 			<i @click="$emit('delete-task', task.id)" class="bx bxs-trash bx-sm"></i>
 		</h3>
 		<p>
-			{{ `${task.month} ${task.date} ${task.time}` }}
+			{{ task.datetime }}
 		</p>
 	</div>
 </template>
