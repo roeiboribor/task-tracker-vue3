@@ -1,16 +1,72 @@
 <template>
 	<div class="container">
 		<Header title="Task Tracker" />
+		<p>
+			<b>Tip: </b>
+			Double Tap to set reminder!
+		</p>
+		<Tasks :tasks="tasks" />
 	</div>
 </template>
 
 <script>
 import Header from './components/Header.vue';
+import Tasks from './components/Tasks.vue';
 
 export default {
 	name: 'App',
 	components: {
 		Header,
+		Tasks,
+	},
+	data() {
+		return {
+			tasks: [],
+		};
+	},
+	created() {
+		this.tasks = [
+			{
+				id: 1,
+				text: 'Take out the trash',
+				month: 'August',
+				date: '03',
+				time: '2:30 PM',
+				reminder: true,
+			},
+			{
+				id: 2,
+				text: 'Clean the windows',
+				month: 'September',
+				date: '01',
+				time: '9:30 PM',
+				reminder: true,
+			},
+			{
+				id: 3,
+				text: 'Cook for lunch',
+				dmonth: 'November',
+				date: '19',
+				time: '2:30 PM',
+				reminder: false,
+			},
+			{
+				id: 4,
+				text: 'Buy some groceries',
+				month: 'December',
+				date: '25',
+				time: '11:00 AM',
+				reminder: false,
+			},
+			{
+				id: 5,
+				text: 'Paint the roof top',
+				month: 'January',
+				date: '13',
+				time: '10:30 AM',
+				reminder: true,
+			},
+		];
 	},
 };
 </script>
